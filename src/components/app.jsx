@@ -3,13 +3,23 @@ import Navbar from "./common/navbar";
 import Dashboard from "./dashboard";
 
 class App extends Component {
-    state = {};
+    state = {
+        todo: []
+    };
+
+    handleAddTodo = (todoItem) => {
+        const { todo: todoList } = this.state;
+        const todo = [...todoList];
+        todoItem['id'] = todoList.length + 1;
+        todo.push(todoItem);
+        this.setState({ todo });
+    }
 
     render() {
         return (
             <div>
                 <Navbar />
-                <Dashboard />
+                <Dashboard data={this.state.todo} onAdd={this.handleAddTodo} />
             </div>
         );
     }
