@@ -1,6 +1,7 @@
 import React from "react";
+import Delete from "./delete";
 
-const List = ({ data }) => {
+const List = ({ data, onDeleteClick }) => {
     return (
         <table className="table table-dark">
             <thead>
@@ -8,6 +9,7 @@ const List = ({ data }) => {
                     <th scope="col">#</th>
                     <th scope="col">Content</th>
                     <th scope="col">Due Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -15,6 +17,7 @@ const List = ({ data }) => {
                     <th scope="row">{datum.id}</th>
                     <td>{datum.content}</td>
                     <td>{datum.dueDate}</td>
+                    <td><Delete item={datum} onClickEvent={onDeleteClick} /></td>
                 </tr>))}
             </tbody>
         </table>
