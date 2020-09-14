@@ -2,6 +2,8 @@ import React from "react";
 import Delete from "./delete";
 
 const List = ({ data, onDeleteClick }) => {
+    if (data.length === 0) return <i><h3 align="center">No items to show...</h3></i>;
+
     return (
         <table className="table table-dark">
             <thead>

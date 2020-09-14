@@ -12,11 +12,29 @@ class Add extends Component {
     }
 
     handleSave = () => {
-        this.props.onAddClick(this.state.todo);
+        const validationMessage = this.validateForm();
 
-        let todo = { ...this.state.todo };
-        todo = { content: '', dueDate: '' };
-        this.setState({ todo });
+        if (validationMessage === "") {
+            this.props.onAddClick(this.state.todo);
+
+            let todo = { ...this.state.todo };
+            todo = { content: '', dueDate: '' };
+            this.setState({ todo });
+        } else {
+            window.alert(validationMessage);
+        }
+    }
+
+    validateForm = () => {
+        const { content, dueDate } = this.state.todo;
+        let validationMessage = "";
+
+        if (content === '') {
+            validationMessage = "Item description cannot be empty.";
+        } else if (dueDate === '') {
+            validationMessage = "Due date cannot be empty.";
+        }
+        return validationMessage;
     }
 
     render() {
