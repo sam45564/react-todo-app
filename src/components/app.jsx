@@ -15,11 +15,18 @@ class App extends Component {
         this.setState({ todo });
     }
 
+    handleDeleteTodo = (todoItem) => {
+        const { todo: todoList } = this.state;
+        const todo = [...todoList];
+        const updateTodoList = todo.filter(t => t.id !== todoItem.id);
+        this.setState({ todo: updateTodoList });
+    }
+
     render() {
         return (
             <div>
                 <Navbar />
-                <Dashboard data={this.state.todo} onAdd={this.handleAddTodo} />
+                <Dashboard data={this.state.todo} onAdd={this.handleAddTodo} onDelete={this.handleDeleteTodo} />
             </div>
         );
     }
