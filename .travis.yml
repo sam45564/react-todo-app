@@ -8,7 +8,7 @@ before_install:
   - docker build -t sam45564/react-todo-list -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true sam45564/react-todo-list npm run test
+  - docker run -e CI=true sam45564/react-todo-list npm run build
 
 after_success:
   - docker build -t sam45564/react-todo-list .
